@@ -1,0 +1,14 @@
+<tr class="flex justify-between items-center border-2 m-1 w-full">
+  <td class="m-2">{{ post.postId }}</td>
+  <td class="items-center">{{ post.userId }}</td>
+  <td>{{ post.categoryId }}</td>
+  <td class="truncate w-56 text-center">{{ post.title }}</td>
+  <td>{{ post.viewCount }}</td>
+  <td>{{ post.creationDate }}</td>
+  <td class="w-3.5 mr-2">
+    <fa-icon
+    [ngStyle]="{ color: 'red' }"
+    [icon]="faTimes"
+    ></fa-icon>
+  </td>
+</tr>

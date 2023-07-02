@@ -1,0 +1,8 @@
+<div class="flex justify-between items-center mb-2">
+  <h1 class="text-3xl font-bold underline p-4  text-white">
+    {{title}}
+  </h1>
+  <app-button text="Add User" textColor="text-white" color="bg-blue-800"></app-button>
+</div>
+<app-user-detail *ngFor="let user of users" [user]="user" ></app-user-detail>
+    

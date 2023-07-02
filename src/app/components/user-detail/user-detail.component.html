@@ -1,0 +1,9 @@
+<div class="p-0.5 px-2">
+    <ul class="flex justify-between items-center text-white m-1 px-3 py-3">
+        <li>{{ user.userName }}</li>
+        <li>{{ user.email }}</li>
+        <li>{{ user.creation_date }}</li>
+        <li>{{ user.isActive }}</li>
+        <fa-icon [ngStyle]="{color: 'red'}" [icon]="faTimes"></fa-icon>
+    </ul>
+</div>
