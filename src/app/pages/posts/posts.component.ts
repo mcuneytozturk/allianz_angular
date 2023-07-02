@@ -8,7 +8,7 @@ import { Post } from 'src/app/Post';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent {
-  title: string = 'Posts';
+  title: string = 'Gönderiler';
   posts: Post[] = posts;
 
   getColumnNames(): string[] {

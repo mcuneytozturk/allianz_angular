@@ -9,7 +9,7 @@ export class ButtonComponent {
   @Input() text: string;
   @Input() textColor: string;
   @Input() color: string;
-  @Output() btnClick = new EventEmitter();
+  @Output() btnClick = new EventEmitter<any>();
   
   constructor(){
     this.text= '';
