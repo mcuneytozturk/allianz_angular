@@ -11,17 +11,16 @@
 <div class="flex justify-center items-center overflow-x-auto">
   <table class="w-full max-w-screen-lg">
     <thead>
-      <tr class="flex justify-between items-center w-full">
+      <tr class="flex justify-between items-center w-full bg-cyan-500">
         <th>User ID</th>
         <th>Post ID</th>
         <th>Category ID</th>
         <th class="w-56">Title</th>
         <th>View Count</th>
-        <th>Creation Date</th>
-        <th class="w-14"></th>
+        <th class="mr-2">Creation Date</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="bg-white ">
       <app-post-detail
         *ngFor="let post of posts"
         [post]="post"

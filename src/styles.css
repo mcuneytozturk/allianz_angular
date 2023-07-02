@@ -8,9 +8,7 @@ html, body {
   }
   
   body {
-    background-image: linear-gradient(to bottom right, rgb(67, 67, 67), rgb(180, 180, 180));
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: darkcyan;
   }
   
   

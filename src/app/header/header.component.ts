@@ -16,7 +16,7 @@ export class HeaderComponent {
   mainPageBtn(){
     console.log("mainPageBtn works");
   }
-   something(){
+  something(){
     console.log("button works");
-   }
+  }
 }

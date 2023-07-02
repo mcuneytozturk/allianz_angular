@@ -12,6 +12,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { CategoriesComponent } from './components/categories/categories.component';
 import { ButtonComponent } from './button/button.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [

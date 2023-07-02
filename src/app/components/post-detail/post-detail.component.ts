@@ -8,6 +8,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent {
- @Input() post!: Post
+ @Input() post!: Post;
  faTimes = faTimes;
 }
