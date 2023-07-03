@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/data/User';
-import { USERS } from 'src/app/data/users';
+import { UserService } from 'src/app/services/user.service';
 import {
   faUserPen,
   faTrash,
@@ -9,25 +9,33 @@ import {
   faCircleInfo,
 } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent {
-  users: User[] = USERS;
   title: string = 'Users';
+  users: User[] = [];
   faUserPen = faUserPen;
   faTrash = faTrash;
   faCheck = faCheck;
   faTimes = faTimes;
   faCircleInfo = faCircleInfo;
+  
   searchText: string = '';
-  filteredData: User[] = USERS;
+  filteredData: User[] = [];
 
+  constructor(private userService: UserService ){}
+
+  ngOnInit(): void {
+    this.users = this.userService.getUsers();
+    this.filteredData = this.userService.getUsers(); 
+  }
   filterData() {
-    if (this.searchText === '') {
-      this.filteredData = this.users;
+    if (this.searchText === '') {      
+      this.filteredData = this.userService.getUsers();
     } else {
       this.filteredData = this.users.filter((user) => {
         return user.userId === +this.searchText;

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { POSTS } from 'src/app/data/posts';
 import { Post } from 'src/app/data/Post';
 import {
   faUserPen,
@@ -8,6 +7,7 @@ import {
   faTimes,
   faCircleInfo,
 } from '@fortawesome/free-solid-svg-icons';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-posts',
@@ -16,7 +16,7 @@ import {
 })
 export class PostsComponent {
   title: string = 'Posts';
-  posts: Post[] = POSTS;
+  posts: Post[] = [];
   faUserPen = faUserPen;
   faTrash = faTrash;
   faCheck = faCheck;
@@ -24,11 +24,17 @@ export class PostsComponent {
   faCircleInfo = faCircleInfo;
 
   searchText: string = '';
-  filteredData: Post[] = POSTS;
+  filteredData: Post[] = [];
 
+  constructor(private postService: PostService){}
+
+  ngOnInit(): void {
+    this.posts = this.postService.getPosts();
+    this.filteredData = this.postService.getPosts();
+  }
   filterData() {
     if (this.searchText === '') {
-      this.filteredData = this.posts;
+      this.filteredData = this.postService.getPosts();
     } else {
       this.filteredData = this.posts.filter((post) => {
         return post.postId === +this.searchText;

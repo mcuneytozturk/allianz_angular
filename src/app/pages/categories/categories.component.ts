@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Category } from 'src/app/data/Category';
-import { CATEGORİES } from 'src/app/data/categories';
 
 import { faUserPen, faTrash, faCheck, faTimes, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -10,7 +10,7 @@ import { faUserPen, faTrash, faCheck, faTimes, faCircleInfo } from '@fortawesome
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent {
-  categories: Category[] = CATEGORİES;
+  categories: Category[] = [];
   title: string = 'Categories';
   faUserPen = faUserPen;
   faTrash = faTrash;
@@ -18,11 +18,17 @@ export class CategoriesComponent {
   faTimes = faTimes;
   faCircleInfo = faCircleInfo;
   searchText: string = '';
-  filteredData: Category[] = CATEGORİES;
+  filteredData: Category[] = [];
 
+  constructor(private categoryService: CategoryService){}
+
+  ngOnInit(): void {
+    this.categories = this.categoryService.getCategories();
+    this.filteredData = this.categoryService.getCategories();
+  }
   filterData() {
     if (this.searchText === '') {
-      this.filteredData = this.categories;
+      this.filteredData = this.categoryService.getCategories();
     } else {
       this.filteredData = this.categories.filter((category) => {
         return category.categoryId === +this.searchText;
