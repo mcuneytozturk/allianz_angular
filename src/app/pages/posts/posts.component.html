@@ -1,11 +1,11 @@
-<div class="flex justify-between items-center mb-2">
-  <h1 class="text-3xl font-bold underline p-4 text-white">
+<div class="flex justify-around items-center mb-2">
+  <h1 class="text-3xl font-bold p-4 text-white">
     {{ title }}
   </h1>
   <app-button
     text="Add User"
-    textColor="text-white"
-    color="bg-blue-800"
+    textColor="text-cyan-950"
+    bgColor="bg-white"
   ></app-button>
 </div>
 <div class="flex justify-center items-center overflow-x-auto">
@@ -34,7 +34,7 @@
         <td class="w-24 text-center">{{ post.viewCount}}</td>
         <td class="w-24 text-center">{{ post.creationDate}}</td>
         <td class="w-24 text-center">{{ post.isPublished}}</td>
-        <td class="w-16 mr-8"><app-button text="Edit" textColor="text-white" color="bg-cyan-500"></app-button></td>
+        <td class="w-16 mr-8"><app-button text="Edit" textColor="text-white" bgColor="bg-cyan-500">Edit</app-button></td>
       </tr>
     </tbody>
   </table>
