@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Post } from 'src/app/Post';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-post-detail',
@@ -9,5 +8,4 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class PostDetailComponent {
  @Input() post!: Post;
- faTimes = faTimes;
 }

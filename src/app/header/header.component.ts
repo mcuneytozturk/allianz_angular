@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,16 +7,4 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
 
-  usersPageBtn(){
-    console.log("usersPageBtn works");
-  }
-  categoryPageBtn(){
-    console.log("categoryPageBtn works");
-  }
-  mainPageBtn(){
-    console.log("mainPageBtn works");
-  }
-  something(){
-    console.log("button works");
-  }
 }

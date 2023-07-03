@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { User } from 'src/app/User';
 import { USERS } from 'src/app/users';
+import { faUserPen, faTrash, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-users',
@@ -10,6 +11,10 @@ import { USERS } from 'src/app/users';
 export class UsersComponent {
   users: User[] = USERS;
   title: string = "Users";
+  faUserPen = faUserPen;
+  faTrash = faTrash;
+  faCheck = faCheck;
+  faTimes = faTimes;
 
   constructor(){
   }
