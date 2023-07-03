@@ -14,7 +14,7 @@
       [ngClass]="'text-2xl text-cyan-300'"
       [icon]="faCircleInfo"
       ></fa-icon>
-      <p class="w-96 bg-white p-2 rounded bg-cyan-300 mx-3 text-center">
+      <p class="w-96 p-2 rounded bg-cyan-600 mx-3 text-center text-white">
         You can add user with "Add Category Button" above
       </p>
       <fa-icon
@@ -27,10 +27,10 @@
     <table class="w-6/12 max-w-screen-xl">
       <thead>
         <tr
-          class="flex justify-between items-center w-full bg-cyan-800 text-white m-1"
+          class="flex justify-between items-center w-full bg-cyan-600 text-white m-1"
         >
-          <th class="ml-12 w-16 text-center">Category ID</th>
-          <th class="w-24 text-center">Category Name</th>
+          <th class="ml-12 w-24 text-center">Category ID</th>
+          <th class="w-32 text-center">Category Name</th>
           <th class="w-28 mr-12 text-center">Creation Date</th>
         </tr>
       </thead>
@@ -41,8 +41,8 @@
           *ngFor="let category of categories"
           class="flex justify-between items-center m-1 w-full"
         >
-          <td class="ml-12 text-center w-16">{{ category.categoryId }}</td>
-          <td class="w-24 text-center">{{ category.name }}</td>
+          <td class="ml-12 text-center w-24">{{ category.categoryId }}</td>
+          <td class="w-32 text-center">{{ category.name }}</td>
           <td class="w-28 mr-12 text-center">{{ category.creationDate }}</td>
 
         </tr>

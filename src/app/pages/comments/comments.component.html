@@ -4,14 +4,14 @@
     </h1>
     <div class="flex">
         <fa-icon [ngClass]="'text-2xl text-cyan-300'" [icon]="faCircleInfo"></fa-icon>
-        <p class="w-96 bg-white p-2 rounded bg-cyan-300 mx-3"> You can click "Info Button" to see the comment and the post which comment belongs to, and Delete comment with the "Delete Button"</p>
+        <p class="w-96 p-2 rounded bg-cyan-400 mx-3"> You can click "Info Button" to see the comment and the post which comment belongs to, and Delete comment with the "Delete Button"</p>
         <fa-icon [ngClass]="'text-2xl text-cyan-300'" [icon]="faCircleInfo"></fa-icon>
     </div>
   </div>
   <div class="flex justify-center items-center overflow-x-auto">
     <table class="w-10/12 max-w-screen-xl">
       <thead>
-        <tr class="flex justify-between items-center w-full bg-cyan-800 text-white m-1">
+        <tr class="flex justify-between items-center w-full bg-cyan-400 text-white m-1">
           <th class="ml-12 w-16 text-center">Comment ID</th>
           <th class="w-24 text-center">Post Id</th>
           <th class="w-24 text-center">User Id</th>
@@ -38,8 +38,8 @@
             </ng-container>
           </td>
           <td class="w-16 mr-14 flex">
-            <app-button textColor="text-white" [bgColor]="'bg-cyan-800'" [icon]="faCircleInfo"></app-button>
-            <app-button textColor="text-white" [bgColor]="'bg-cyan-800'" [icon]="faTrash"></app-button>
+            <app-button textColor="text-white" [bgColor]="'bg-cyan-400'" [icon]="faCircleInfo"></app-button>
+            <app-button textColor="text-white" [bgColor]="'bg-cyan-400'" [icon]="faTrash"></app-button>
           </td>
         </tr>
       </tbody>
