@@ -21,12 +21,12 @@ export class CommentsComponent {
   constructor(private commentService: CommentService) {}
 
   ngOnInit(): void {
-    this.comments = this.commentService.getComments();
-    this.filteredData = this.commentService.getComments();
+    this.commentService.getComments().subscribe((comments) => (this.comments = comments));
+    this.commentService.getComments().subscribe((comments) => (this.filteredData = comments));
   }
   filterData() {
     if (this.searchText === '') {
-      this.filteredData = this.commentService.getComments();
+      this.commentService.getComments().subscribe((comments) => (this.filteredData = comments));
     } else {
       this.filteredData = this.comments.filter((comment) => {
         return comment.commentId === +this.searchText;

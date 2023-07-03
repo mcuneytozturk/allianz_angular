@@ -30,12 +30,12 @@ export class UsersComponent {
   constructor(private userService: UserService ){}
 
   ngOnInit(): void {
-    this.users = this.userService.getUsers();
-    this.filteredData = this.userService.getUsers(); 
+    this.userService.getUsers().subscribe((users) => (this.users = users));
+    this.userService.getUsers().subscribe((users) => (this.filteredData = users)); 
   }
   filterData() {
     if (this.searchText === '') {      
-      this.filteredData = this.userService.getUsers();
+      this.userService.getUsers().subscribe((users) => (this.filteredData = users));
     } else {
       this.filteredData = this.users.filter((user) => {
         return user.userId === +this.searchText;

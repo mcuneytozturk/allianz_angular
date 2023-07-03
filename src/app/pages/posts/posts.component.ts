@@ -29,12 +29,12 @@ export class PostsComponent {
   constructor(private postService: PostService){}
 
   ngOnInit(): void {
-    this.posts = this.postService.getPosts();
-    this.filteredData = this.postService.getPosts();
+    this.postService.getPosts().subscribe((posts) => (this.posts = posts));
+    this.postService.getPosts().subscribe((posts) => (this.filteredData = posts));
   }
   filterData() {
     if (this.searchText === '') {
-      this.filteredData = this.postService.getPosts();
+      this.postService.getPosts().subscribe((posts) => (this.filteredData = posts));
     } else {
       this.filteredData = this.posts.filter((post) => {
         return post.postId === +this.searchText;

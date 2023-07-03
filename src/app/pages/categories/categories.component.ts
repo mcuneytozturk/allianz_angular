@@ -23,12 +23,12 @@ export class CategoriesComponent {
   constructor(private categoryService: CategoryService){}
 
   ngOnInit(): void {
-    this.categories = this.categoryService.getCategories();
-    this.filteredData = this.categoryService.getCategories();
+    this.categoryService.getCategories().subscribe((categories) => (this.categories = categories));
+    this.categoryService.getCategories().subscribe((categories) => (this.filteredData = categories));
   }
   filterData() {
     if (this.searchText === '') {
-      this.filteredData = this.categoryService.getCategories();
+      this.categoryService.getCategories().subscribe((categories) => (this.filteredData = categories));
     } else {
       this.filteredData = this.categories.filter((category) => {
         return category.categoryId === +this.searchText;

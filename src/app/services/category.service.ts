@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Category } from 'src/app/data/Category';
 import { CATEGORİES } from 'src/app/data/categories';
 
@@ -9,7 +10,8 @@ export class CategoryService {
 
   constructor() { }
 
-  getCategories(): Category[]{
-    return CATEGORİES;
+  getCategories(): Observable<Category[]> {
+    const categories = of(CATEGORİES)
+    return categories;
   }
 }

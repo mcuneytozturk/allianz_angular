@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Comment } from 'src/app/data/Comment';
 import { COMMENTS } from 'src/app/data/comments';
 
@@ -9,7 +10,8 @@ export class CommentService {
 
   constructor() { }
 
-  getComments(): Comment[]{
-    return COMMENTS;
+  getComments(): Observable<Comment[]>{
+    const comments = of(COMMENTS)
+    return comments;
   }
 }
