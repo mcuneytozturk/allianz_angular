@@ -2,6 +2,7 @@
     <h1 class="text-3xl font-bold p-4 text-white">
       {{ title }}
     </h1>
+    <input class="rounded p-2 mb-3" type="text" [(ngModel)]="searchText" placeholder="Search by ID" (ngModelChange)="onSearchTextChange()">
     <div class="flex">
         <fa-icon [ngClass]="'text-2xl text-cyan-300'" [icon]="faCircleInfo"></fa-icon>
         <p class="w-96 p-2 rounded bg-cyan-400 mx-3"> You can click "Info Button" to see the comment and the post which comment belongs to, and Delete comment with the "Delete Button"</p>
@@ -22,7 +23,7 @@
       </thead>
       <tbody class="bg-white flex flex-col justify-between items-center m-1 w-full">
         <tr
-          *ngFor="let comment of comments.slice(0,5)"
+          *ngFor="let comment of filteredData.slice(0,5)"
           class="flex justify-between items-center m-1 w-full"
         >
           <td class="ml-12 text-center w-16">{{ comment.commentId }}</td>

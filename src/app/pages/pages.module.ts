@@ -8,6 +8,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { PostsComponent } from './posts/posts.component';
 import { UsersComponent } from './users/users.component';
 import { ComponentModule } from '../components/component.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ComponentModule } from '../components/component.module';
   imports: [
     CommonModule,
     FontAwesomeModule,
-    ComponentModule
+    ComponentModule,
+    FormsModule
   ],
   exports: [
     CategoriesComponent,

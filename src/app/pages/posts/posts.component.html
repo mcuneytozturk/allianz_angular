@@ -3,6 +3,7 @@
     <h1 class="text-3xl font-bold p-4 text-white">
       {{ title }}
     </h1>
+    <input class="rounded p-2" type="text" [(ngModel)]="searchText" placeholder="Search by ID" (ngModelChange)="onSearchTextChange()">
     <app-button
       text="Add Post"
       textColor="text-cyan-950"
@@ -41,7 +42,7 @@
       class="bg-white flex flex-col justify-between items-center m-1 w-full"
     >
       <tr
-        *ngFor="let post of posts.slice(0, 5)"
+        *ngFor="let post of filteredData.slice(0, 5)"
         class="flex justify-between items-center m-1 w-full"
       >
         <td class="ml-8 text-center w-16">{{ post.postId }}</td>

@@ -1,6 +1,6 @@
 import { Comment } from "./Comment";
 
-export const comments: Comment[] = [
+export const COMMENTS: Comment[] = [
   {
     commentId: 1,
     postId: 8,

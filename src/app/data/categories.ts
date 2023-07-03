@@ -1,6 +1,6 @@
 import { Category } from "./Category";
 
- export const categories: Category[] = [
+ export const CATEGORİES: Category[] = [
   {
     categoryId: 1,
     name: "Sport",

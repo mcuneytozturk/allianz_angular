@@ -1,6 +1,6 @@
  import { Post } from "./Post"
  
- export const posts: Post[] = [
+ export const POSTS: Post[] = [
   {
     postId: 1,
     userId: 4,
