@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Comment } from 'src/app/Comment';
-import { comments } from 'src/app/comments';
+import { Comment } from 'src/app/data/Comment';
+import { comments } from 'src/app/data/comments';
 import { faCircleInfo, faTrash, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

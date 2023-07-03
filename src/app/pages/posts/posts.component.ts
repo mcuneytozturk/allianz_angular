@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { posts } from 'src/app/posts';
-import { Post } from 'src/app/Post';
+import { posts } from 'src/app/data/posts';
+import { Post } from 'src/app/data/Post';
 import { faUserPen, faTrash, faCheck, faTimes, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Category } from 'src/app/Category';
-import { categories } from 'src/app/categories';
+import { Category } from 'src/app/data/Category';
+import { categories } from 'src/app/data/categories';
 
 import { faUserPen, faTrash, faCheck, faTimes, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 

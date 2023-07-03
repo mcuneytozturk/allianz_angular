@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from 'src/app/User';
+import { User } from 'src/app/data/User';
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 @Component({

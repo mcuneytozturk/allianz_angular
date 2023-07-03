@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from 'src/app/User';
-import { USERS } from 'src/app/users';
+import { User } from 'src/app/data/User';
+import { USERS } from 'src/app/data/users';
 import { faUserPen, faTrash, faCheck, faTimes, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
