@@ -1,30 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PagesModule } from './pages/pages.module';
+import { DetailPagesModule } from './detail-pages/detail-pages.module';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ComponentModule } from './components/component.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
-import { PostDetailComponent } from './components/post-detail/post-detail.component';
-import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
-import { CommentDetailComponent } from './components/comment-detail/comment-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    UserDetailComponent,
-    PostDetailComponent,
-    CategoryDetailComponent,
-    CommentDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    DetailPagesModule,
+    ComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
