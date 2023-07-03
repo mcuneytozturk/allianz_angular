@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Comment } from 'src/app/Comment';
+import { comments } from 'src/app/comments';
+import { faCircleInfo, faTrash, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-comments',
@@ -6,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./comments.component.css']
 })
 export class CommentsComponent {
-
+  comments: Comment[] = comments;
+  title: string = "Comments";
+  faCircleInfo = faCircleInfo;
+  faTrash = faTrash;
+  faCheck = faCheck;
+  faTimes = faTimes;
 }

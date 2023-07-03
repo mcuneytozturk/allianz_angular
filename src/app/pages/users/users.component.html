@@ -1,26 +1,45 @@
-<div class="flex justify-around items-center mb-2">
-  <h1 class="text-3xl font-bold p-4 text-white">
-    {{ title }}
-  </h1>
-  <app-button
+<div class="flex flex-col justify-center items-center mb-2 w-full">
+  <div class="flex justify-around items-center mb-2 w-full">
+    <h1 class="text-3xl font-bold p-4 text-white">
+      {{ title }}
+    </h1>
+    <app-button
     text="Add User"
     textColor="text-cyan-950"
     bgColor="bg-white"
-  ></app-button>
+    ></app-button>
+  </div>
+  <div class="flex">
+    <fa-icon
+    [ngClass]="'text-2xl text-cyan-300'"
+    [icon]="faCircleInfo"
+    ></fa-icon>
+    <p class="w-96 bg-white p-2 rounded bg-cyan-300 mx-3 text-center">
+      You can add user with "Add User Button" above and see/edit user details with "Edit Button" and delete user with the "Delete Button"
+    </p>
+    <fa-icon
+    [ngClass]="'text-2xl text-cyan-300'"
+    [icon]="faCircleInfo"
+    ></fa-icon>
+  </div>
 </div>
 <div class="flex justify-center items-center overflow-x-auto">
   <table class="w-10/12 max-w-screen-xl">
     <thead>
-      <tr class="flex justify-between items-center w-full bg-cyan-800 text-white m-1">
+      <tr
+        class="flex justify-between items-center w-full bg-cyan-800 text-white m-1"
+      >
         <th class="ml-12 w-16 text-center">User ID</th>
         <th class="w-24 text-center">User Name</th>
         <th class="w-52 text-center">E-mail</th>
         <th class="w-28 text-center">Creation Date</th>
-        <th class="w-24 text-center" >Activeness</th>
+        <th class="w-24 text-center">Activeness</th>
         <td class="w-16 mr-12"></td>
       </tr>
     </thead>
-    <tbody class="bg-white flex flex-col justify-between items-center m-1 w-full">
+    <tbody
+      class="bg-white flex flex-col justify-between items-center m-1 w-full"
+    >
       <tr
         *ngFor="let user of users"
         class="flex justify-between items-center m-1 w-full"
@@ -30,16 +49,24 @@
         <td class="w-52 text-center">{{ user.email }}</td>
         <td class="w-28 text-center">{{ user.creation_date }}</td>
         <td class="w-24 text-center">
-          <ng-container *ngIf="user.isActive" >
+          <ng-container *ngIf="user.isActive">
             <fa-icon [icon]="faTimes"></fa-icon>
           </ng-container>
-          <ng-container *ngIf="!user.isActive" >
+          <ng-container *ngIf="!user.isActive">
             <fa-icon [icon]="faCheck"></fa-icon>
           </ng-container>
         </td>
         <td class="w-16 mr-14 flex">
-          <app-button textColor="text-white" [bgColor]="'bg-cyan-800'" [icon]="faUserPen"></app-button>
-          <app-button textColor="text-white" [bgColor]="'bg-cyan-800'" [icon]="faTrash"></app-button>
+          <app-button
+            textColor="text-white"
+            [bgColor]="'bg-cyan-800'"
+            [icon]="faUserPen"
+          ></app-button>
+          <app-button
+            textColor="text-white"
+            [bgColor]="'bg-cyan-800'"
+            [icon]="faTrash"
+          ></app-button>
         </td>
       </tr>
     </tbody>

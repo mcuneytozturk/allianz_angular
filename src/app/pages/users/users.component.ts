@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/User';
 import { USERS } from 'src/app/users';
-import { faUserPen, faTrash, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faUserPen, faTrash, faCheck, faTimes, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-users',
@@ -15,9 +15,5 @@ export class UsersComponent {
   faTrash = faTrash;
   faCheck = faCheck;
   faTimes = faTimes;
-
-  constructor(){
-  }
-
-  ngOnInıt(): void {  }
+  faCircleInfo = faCircleInfo;
 }
