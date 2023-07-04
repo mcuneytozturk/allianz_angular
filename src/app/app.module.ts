@@ -7,12 +7,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ComponentModule } from './components/component.module';
 
 import { AppComponent } from './app.component';
-import { UserAddComponent } from './additionForms-page/user-add/user-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserAddComponent,
   ],
   imports: [
     BrowserModule,

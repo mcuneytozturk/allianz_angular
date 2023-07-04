@@ -10,6 +10,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { PostsComponent } from './posts/posts.component';
 import { UsersComponent } from './users/users.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CommonModule,
     FontAwesomeModule,
     ComponentModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [
     CategoriesComponent,
