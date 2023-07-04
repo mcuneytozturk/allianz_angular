@@ -40,13 +40,9 @@
         <td class="w-24 text-center">{{ post.viewCount }}</td>
         <td class="w-24 text-center">{{ post.creationDate }}</td>
         <td class="w-24 text-center">
-          <ng-container *ngIf="post.isPublished">
-            <fa-icon [icon]="faTimes"></fa-icon>
-          </ng-container>
-          <ng-container *ngIf="!post.isPublished">
-            <fa-icon [icon]="faCheck"></fa-icon>
-          </ng-container>
+          <fa-icon [icon]="post.isPublished ? faCheck : faTimes"></fa-icon>
         </td>
+        
         <td class="w-16 mr-14 flex">
           <app-button
             textColor="text-white"

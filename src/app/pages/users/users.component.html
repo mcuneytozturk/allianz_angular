@@ -39,12 +39,7 @@
         <td class="w-52 text-center">{{ user.email }}</td>
         <td class="w-28 text-center">{{ user.creation_date }}</td>
         <td class="w-24 text-center">
-          <ng-container *ngIf="user.isActive">
-            <fa-icon [icon]="faTimes"></fa-icon>
-          </ng-container>
-          <ng-container *ngIf="!user.isActive">
-            <fa-icon [icon]="faCheck"></fa-icon>
-          </ng-container>
+          <fa-icon [icon]="user.isActive ? faCheck : faTimes"></fa-icon>
         </td>
         <td class="w-16 mr-14 flex">
           <app-button
