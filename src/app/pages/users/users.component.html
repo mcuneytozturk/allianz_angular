@@ -3,15 +3,25 @@
     <h1 class="text-3xl font-bold p-4 text-white">
       {{ title }}
     </h1>
-    <input class="rounded p-2" type="text" [(ngModel)]="searchText" placeholder="Search by ID" (ngModelChange)="onSearchTextChange()">
+    <input
+      class="rounded p-2"
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Search by ID"
+      (ngModelChange)="onSearchTextChange()"
+    />
     <app-button
-    text="Add User"
-    textColor="text-cyan-950"
-    bgColor="bg-white"
+      text="Add User"
+      textColor="text-cyan-950"
+      bgColor="bg-white"
     ></app-button>
   </div>
 
-  <app-info color="bg-cyan-700" textColor="text-cyan-700" parag="You can add user with 'Add User Button' above and see/edit user details with 'Edit Button' and delete user with the 'Delete Button'"></app-info>
+  <app-info
+    color="bg-cyan-700"
+    textColor="text-cyan-700"
+    parag="You can add user with 'Add User Button' above and see/edit user details with 'Edit Button' and delete user with the 'Delete Button'"
+  ></app-info>
 </div>
 <div class="flex justify-center items-center overflow-x-auto">
   <table class="w-10/12 max-w-screen-xl">

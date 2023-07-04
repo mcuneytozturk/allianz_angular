@@ -3,19 +3,31 @@
     <h1 class="text-3xl font-bold p-4 text-white">
       {{ title }}
     </h1>
-    <input class="rounded p-2" type="text" [(ngModel)]="searchText" placeholder="Search by ID" (ngModelChange)="onSearchTextChange()">
+    <input
+      class="rounded p-2"
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Search by ID"
+      (ngModelChange)="onSearchTextChange()"
+    />
     <app-button
       text="Add Post"
       textColor="text-cyan-950"
       bgColor="bg-white"
     ></app-button>
   </div>
-  <app-info textColor="text-cyan-500" color="bg-cyan-500" parag="You can add post with 'Add Post Button' above and see/edit post details with 'Edit Button' and delete post with the 'Delete Button'"></app-info>
+  <app-info
+    textColor="text-cyan-500"
+    color="bg-cyan-500"
+    parag="You can add post with 'Add Post Button' above and see/edit post details with 'Edit Button' and delete post with the 'Delete Button'"
+  ></app-info>
 </div>
 <div class="flex justify-center items-center overflow-x-auto">
   <table class="w-10/12 max-w-screen-xl">
     <thead>
-      <tr class="flex justify-between items-center w-full bg-cyan-500 m-1">
+      <tr
+        class="flex justify-between items-center w-full bg-cyan-500 m-1 text-white"
+      >
         <th class="ml-8 text-center w-16">Post ID</th>
         <th class="w-16 text-center">User ID</th>
         <th class="w-24 text-center">Category ID</th>
@@ -42,7 +54,6 @@
         <td class="w-24 text-center">
           <fa-icon [icon]="post.isPublished ? faCheck : faTimes"></fa-icon>
         </td>
-        
         <td class="w-16 mr-14 flex">
           <app-button
             textColor="text-white"
