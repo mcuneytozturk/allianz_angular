@@ -11,7 +11,7 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { CategoryService } from 'src/app/services/category.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -35,10 +35,15 @@ export class CategoriesComponent {
 
   constructor(
     private categoryService: CategoryService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    const queryParams = this.route.snapshot.queryParams;
+    if (queryParams['i'] !== undefined) {
+      this.pageIndex = parseInt(queryParams['i']);
+    }
     this.categoryService
       .getCategories()
       .subscribe((categories) => (this.categories = categories));
@@ -77,7 +82,7 @@ export class CategoriesComponent {
       this.pageIndex === 0
         ? this.router.navigate(['categories'])
         : this.router.navigate(['categories'], {
-            queryParams: { categoryIndex: this.pageIndex },
+            queryParams: { i: this.pageIndex },
           });
     } else {
       this.isPrevDisabled = true;
@@ -96,7 +101,7 @@ export class CategoriesComponent {
       this.pageIndex++;
       this.isPrevDisabled = false;
       this.router.navigate(['categories'], {
-        queryParams: { categoryIndex: this.pageIndex },
+        queryParams: { i: this.pageIndex },
       });
     } else {
       alert('Last Page!!');

@@ -9,7 +9,7 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { CommentService } from 'src/app/services/comment.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-comments',
@@ -28,8 +28,20 @@ export class CommentsComponent {
   searchText: string = '';
   filteredData: Comment[] = [];
 
-  constructor(private commentService: CommentService, private router: Router) {}
+  constructor(private commentService: CommentService, private router: Router, private route: ActivatedRoute) {}
 
+  ngOnInit(): void {
+      const queryParams = this.route.snapshot.queryParams;
+      if (queryParams['i'] !== undefined) {
+        this.pageIndex = parseInt(queryParams['i']);
+      }
+    this.commentService
+      .getComments()
+      .subscribe((comments) => (this.comments = comments));
+    this.commentService
+      .getComments()
+      .subscribe((comments) => (this.filteredData = comments));
+  }
   deleteComment(commentId: number | undefined) {
     if (commentId !== undefined) {
       this.commentService.deleteComment(commentId);
@@ -38,14 +50,8 @@ export class CommentsComponent {
     }
   }
 
-  ngOnInit(): void {
-    this.commentService
-      .getComments()
-      .subscribe((comments) => (this.comments = comments));
-    this.commentService
-      .getComments()
-      .subscribe((comments) => (this.filteredData = comments));
-  }
+
+
   filterData() {
     if (this.searchText === '') {
       this.commentService
@@ -77,7 +83,7 @@ export class CommentsComponent {
       this.pageIndex === 0
         ? this.router.navigate(['comments'])
         : this.router.navigate(['comments'], {
-            queryParams: { commentIndex: this.pageIndex },
+            queryParams: { i: this.pageIndex },
           });
     } else {
       this.isPrevDisabled = true;
@@ -92,13 +98,11 @@ export class CommentsComponent {
     if(remainingPages > 0) {
       totalPage++
     } 
-      console.log('pageIndex: ' + this.pageIndex);
-     console.log('totalPage: ' + totalPage);
     if (this.pageIndex + 1 < totalPage) {
       this.pageIndex++;
       this.isPrevDisabled = false;
       this.router.navigate(['comments'], {
-        queryParams: { commentIndex: this.pageIndex },
+        queryParams: { i: this.pageIndex },
       });
     } else {
       alert('Last Page!!')

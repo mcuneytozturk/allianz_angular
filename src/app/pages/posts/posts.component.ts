@@ -10,7 +10,7 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { PostService } from 'src/app/services/post.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -31,7 +31,20 @@ export class PostsComponent {
   searchText: string = '';
   filteredData: Post[] = [];
 
-  constructor(private postService: PostService, private router: Router) {}
+  constructor(private postService: PostService, private router: Router, private route: ActivatedRoute) {
+    
+  }
+
+  ngOnInit(): void {
+    const queryParams = this.route.snapshot.queryParams;
+    if(queryParams['i'] !== undefined){
+      this.pageIndex = parseInt(queryParams['i'])
+    }
+    this.postService.getPosts().subscribe((posts) => (this.posts = posts));
+    this.postService
+      .getPosts()
+      .subscribe((posts) => (this.filteredData = posts));
+  }
 
   deletePost(postId: number | undefined): void {
     if (postId !== undefined) {
@@ -41,12 +54,6 @@ export class PostsComponent {
     }
   }
 
-  ngOnInit(): void {
-    this.postService.getPosts().subscribe((posts) => (this.posts = posts));
-    this.postService
-      .getPosts()
-      .subscribe((posts) => (this.filteredData = posts));
-  }
   filterData() {
     if (this.searchText === '') {
       this.postService
@@ -77,7 +84,7 @@ export class PostsComponent {
       this.pageIndex === 0
         ? this.router.navigate(['posts'])
         : this.router.navigate(['posts'], {
-            queryParams: { postIndex: this.pageIndex },
+            queryParams: { i: this.pageIndex },
           });
     } else {
       this.isPrevDisabled = true;
@@ -92,12 +99,10 @@ export class PostsComponent {
     if (remainingPages > 0) {
       totalPage++;
     }
-    console.log('pageIndex: ' + this.pageIndex);
-    console.log('totalPage: ' + totalPage);
     if (this.pageIndex + 1 < totalPage) {
       this.pageIndex++;
       this.router.navigate(['posts'], {
-        queryParams: { postIndex: this.pageIndex },
+        queryParams: { i: this.pageIndex },
       });
       this.isPrevDisabled = false;
     } else {

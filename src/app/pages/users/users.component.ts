@@ -8,10 +8,9 @@ import {
   faTimes,
   faCircleInfo,
   faAngleLeft,
-  faAngleRight
+  faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -28,11 +27,22 @@ export class UsersComponent {
   faCircleInfo = faCircleInfo;
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
-  
+
   searchText: string = '';
   filteredData: User[] = [];
 
-  constructor(private userService: UserService, private router: Router ){}
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const queryParams = this.route.snapshot.queryParams;
+    if (queryParams['i'] !== undefined) {
+      this.pageIndex = parseInt(queryParams['i']);
+    }
+    this.userService.getUsers().subscribe((users) => (this.users = users));
+    this.userService
+      .getUsers()
+      .subscribe((users) => (this.filteredData = users));
+  }
 
   deleteUser(userId: number | undefined): void {
     if (userId !== undefined) {
@@ -41,15 +51,12 @@ export class UsersComponent {
       throw new Error('Kullanıcıya ait bir userId değeri bulunmuyor.');
     }
   }
-  
-  ngOnInit(): void {
-    this.userService.getUsers().subscribe((users) => (this.users = users));
-    this.userService.getUsers().subscribe((users) => (this.filteredData = users)); 
-  }
 
   filterData() {
-    if (this.searchText === '') {      
-      this.userService.getUsers().subscribe((users) => (this.filteredData = users));
+    if (this.searchText === '') {
+      this.userService
+        .getUsers()
+        .subscribe((users) => (this.filteredData = users));
     } else {
       this.filteredData = this.users.filter((user) => {
         return user.userId === +this.searchText;
@@ -58,7 +65,9 @@ export class UsersComponent {
   }
 
   onSearchTextChange() {
-    this.router.navigate(['/users'], { queryParams: { userId: this.searchText } });
+    this.router.navigate(['/users'], {
+      queryParams: { userId: this.searchText },
+    });
     this.filterData();
   }
 
@@ -66,7 +75,6 @@ export class UsersComponent {
   pageSize: number = 10;
   isNextDisabled: boolean = false;
   isPrevDisabled: boolean = false;
-  
 
   handlePrevBtn() {
     if (this.pageIndex > 0) {
@@ -75,11 +83,11 @@ export class UsersComponent {
       this.pageIndex === 0
         ? this.router.navigate(['users'])
         : this.router.navigate(['users'], {
-            queryParams: { userIndex: this.pageIndex },
+            queryParams: { i: this.pageIndex },
           });
     } else {
       this.isPrevDisabled = true;
-      alert('Last Page!!')
+      alert('Last Page!!');
     }
   }
 
@@ -87,16 +95,17 @@ export class UsersComponent {
     const remainingPages = this.users.length % this.pageSize;
     let totalPage: number = Math.floor(this.users.length / this.pageSize);
 
-    if(remainingPages > 0) {
-      totalPage++
-    } 
-      console.log('pageIndex: ' + this.pageIndex);
-     console.log('totalPage: ' + totalPage);
+    if (remainingPages > 0) {
+      totalPage++;
+    }
     if (this.pageIndex + 1 < totalPage) {
       this.pageIndex++;
       this.isPrevDisabled = false;
+      this.router.navigate(['users'], {
+        queryParams: { i: this.pageIndex },
+      });
     } else {
-      alert('Last Page!!')
+      alert('Last Page!!');
       this.isNextDisabled = true;
     }
   }
