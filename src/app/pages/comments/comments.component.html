@@ -54,6 +54,7 @@
             textColor="text-white"
             [bgColor]="'bg-cyan-400'"
             [icon]="faTrash"
+            (btnClick)="deleteComment(comment.commentId)"
           ></app-button>
         </td>
       </tr>

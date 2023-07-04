@@ -28,6 +28,14 @@ export class PostsComponent {
 
   constructor(private postService: PostService){}
 
+  deletePost(postId: number | undefined): void {
+    if (postId !== undefined) {
+      this.postService.deletePost(postId);
+    } else {
+      throw new Error('Gönderiye ait bir postId değeri bulunmuyor.');
+    }
+  }
+
   ngOnInit(): void {
     this.postService.getPosts().subscribe((posts) => (this.posts = posts));
     this.postService.getPosts().subscribe((posts) => (this.filteredData = posts));

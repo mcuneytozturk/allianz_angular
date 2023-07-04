@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ComponentModule } from './components/component.module';
 
 import { AppComponent } from './app.component';
+import { FormPagesModule } from './form-pages/form-pages.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AppComponent } from './app.component';
     PagesModule,
     FontAwesomeModule,
     DetailPagesModule,
-    ComponentModule
+    ComponentModule,
+    FormPagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

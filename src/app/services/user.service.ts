@@ -25,4 +25,10 @@ export class UserService {
     return this.usersSubject.asObservable();
   }
   
+  deleteUser(userId: number): void {
+    const index = this.users.findIndex(user => user.userId === userId);
+    if (index !== -1) {
+      this.users.splice(index, 1);
+    }
+  }
 }

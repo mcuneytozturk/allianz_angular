@@ -20,6 +20,14 @@ export class CommentsComponent {
 
   constructor(private commentService: CommentService) {}
 
+  deleteComment(commentId: number | undefined){
+    if(commentId !== undefined){
+      this.commentService.deleteComment(commentId)
+    } else {
+      throw new Error('Yoruma ait bir commentId değeri bulunmuyor.')
+    }
+  }
+
   ngOnInit(): void {
     this.commentService.getComments().subscribe((comments) => (this.comments = comments));
     this.commentService.getComments().subscribe((comments) => (this.filteredData = comments));

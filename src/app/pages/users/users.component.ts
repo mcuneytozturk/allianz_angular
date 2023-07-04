@@ -29,10 +29,19 @@ export class UsersComponent {
 
   constructor(private userService: UserService ){}
 
+  deleteUser(userId: number | undefined): void {
+    if (userId !== undefined) {
+      this.userService.deleteUser(userId);
+    } else {
+      throw new Error('Kullanıcıya ait bir userId değeri bulunmuyor.');
+    }
+  }
+  
   ngOnInit(): void {
     this.userService.getUsers().subscribe((users) => (this.users = users));
     this.userService.getUsers().subscribe((users) => (this.filteredData = users)); 
   }
+
   filterData() {
     if (this.searchText === '') {      
       this.userService.getUsers().subscribe((users) => (this.filteredData = users));

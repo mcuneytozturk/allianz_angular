@@ -64,6 +64,7 @@
           <app-button
             textColor="text-white"
             [bgColor]="'bg-cyan-500'"
+            (btnClick)="deletePost(post.postId)"
             [icon]="faTrash"
           ></app-button>
         </td>
