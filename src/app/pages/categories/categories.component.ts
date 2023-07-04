@@ -69,15 +69,19 @@ export class CategoriesComponent {
   pageSize: number = 10;
   isNextDisabled: boolean = false;
   isPrevDisabled: boolean = false;
-  
 
   handlePrevBtn() {
     if (this.pageIndex > 0) {
       this.pageIndex--;
       this.isNextDisabled = false;
+      this.pageIndex === 0
+        ? this.router.navigate(['categories'])
+        : this.router.navigate(['categories'], {
+            queryParams: { categoryIndex: this.pageIndex },
+          });
     } else {
       this.isPrevDisabled = true;
-      alert('Last Page!!')
+      alert('Last Page!!');
     }
   }
 
@@ -85,16 +89,17 @@ export class CategoriesComponent {
     const remainingPages = this.categories.length % this.pageSize;
     let totalPage: number = Math.floor(this.categories.length / this.pageSize);
 
-    if(remainingPages > 0) {
-      totalPage++
-    } 
-      console.log('pageIndex: ' + this.pageIndex);
-     console.log('totalPage: ' + totalPage);
+    if (remainingPages > 0) {
+      totalPage++;
+    }
     if (this.pageIndex + 1 < totalPage) {
       this.pageIndex++;
       this.isPrevDisabled = false;
+      this.router.navigate(['categories'], {
+        queryParams: { categoryIndex: this.pageIndex },
+      });
     } else {
-      alert('Last Page!!')
+      alert('Last Page!!');
       this.isNextDisabled = true;
     }
   }

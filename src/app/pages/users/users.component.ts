@@ -72,6 +72,11 @@ export class UsersComponent {
     if (this.pageIndex > 0) {
       this.pageIndex--;
       this.isNextDisabled = false;
+      this.pageIndex === 0
+        ? this.router.navigate(['users'])
+        : this.router.navigate(['users'], {
+            queryParams: { userIndex: this.pageIndex },
+          });
     } else {
       this.isPrevDisabled = true;
       alert('Last Page!!')

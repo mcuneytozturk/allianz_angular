@@ -69,15 +69,19 @@ export class PostsComponent {
   pageSize: number = 10;
   isNextDisabled: boolean = false;
   isPrevDisabled: boolean = false;
-  
 
   handlePrevBtn() {
     if (this.pageIndex > 0) {
       this.pageIndex--;
       this.isNextDisabled = false;
+      this.pageIndex === 0
+        ? this.router.navigate(['posts'])
+        : this.router.navigate(['posts'], {
+            queryParams: { postIndex: this.pageIndex },
+          });
     } else {
       this.isPrevDisabled = true;
-      alert('Last Page!!')
+      alert('Last Page!!');
     }
   }
 
@@ -85,16 +89,19 @@ export class PostsComponent {
     const remainingPages = this.posts.length % this.pageSize;
     let totalPage: number = Math.floor(this.posts.length / this.pageSize);
 
-    if(remainingPages > 0) {
-      totalPage++
-    } 
-      console.log('pageIndex: ' + this.pageIndex);
-     console.log('totalPage: ' + totalPage);
+    if (remainingPages > 0) {
+      totalPage++;
+    }
+    console.log('pageIndex: ' + this.pageIndex);
+    console.log('totalPage: ' + totalPage);
     if (this.pageIndex + 1 < totalPage) {
       this.pageIndex++;
+      this.router.navigate(['posts'], {
+        queryParams: { postIndex: this.pageIndex },
+      });
       this.isPrevDisabled = false;
     } else {
-      alert('Last Page!!')
+      alert('Last Page!!');
       this.isNextDisabled = true;
     }
   }

@@ -74,6 +74,11 @@ export class CommentsComponent {
     if (this.pageIndex > 0) {
       this.pageIndex--;
       this.isNextDisabled = false;
+      this.pageIndex === 0
+        ? this.router.navigate(['comments'])
+        : this.router.navigate(['comments'], {
+            queryParams: { commentIndex: this.pageIndex },
+          });
     } else {
       this.isPrevDisabled = true;
       alert('Last Page!!')
@@ -92,6 +97,9 @@ export class CommentsComponent {
     if (this.pageIndex + 1 < totalPage) {
       this.pageIndex++;
       this.isPrevDisabled = false;
+      this.router.navigate(['comments'], {
+        queryParams: { commentIndex: this.pageIndex },
+      });
     } else {
       alert('Last Page!!')
       this.isNextDisabled = true;

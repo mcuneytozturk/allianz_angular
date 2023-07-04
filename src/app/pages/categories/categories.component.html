@@ -39,7 +39,7 @@
       class="bg-white flex flex-col justify-between items-center m-1 w-full"
     >
       <tr
-        *ngFor="let category of filteredData"
+        *ngFor="let category of filteredData | slice: (pageIndex * pageSize): ((pageIndex + 1) * pageSize)"
         class="flex justify-between items-center m-1 w-full text-xs h-4"
       >
         <td class="ml-12 text-center w-24">{{ category.categoryId }}</td>
