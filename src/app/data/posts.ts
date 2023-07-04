@@ -600,5 +600,15 @@
     viewCount: 5,
     creationDate: "2022-09-19",
     isPublished: false
+  },
+  {
+    postId: 61,
+    userId: 5,
+    categoryId: 4,
+    title: "13 Years of Drama",
+    content: "aksjdbsajd jklasndksja j kajsdn kkj nakjsdn ",
+    viewCount: 55,
+    creationDate: "2022-05-10",
+    isPublished: true
   }
 ]

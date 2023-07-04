@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./add-user.component.css'],
 })
 export class AddUserComponent {
+  users: User[] = []
   newUser: User = {
     userId: 0,
     userName: '',
@@ -17,6 +18,7 @@ export class AddUserComponent {
 
   constructor(private userService: UserService) {
     this.userService.getUsers().subscribe((users: User[]) => {
+      this.users = users;
       this.newUser.userId = users.length + 1;
     });
   }
@@ -25,7 +27,7 @@ export class AddUserComponent {
     this.newUser.creation_date = new Date().toISOString().slice(0, 10);
     this.userService.addUser(this.newUser);
     this.newUser = {
-      userId: 0,
+      userId: this.users.length + 1,
       userName: '',
       email: '',
       creation_date: new Date().toISOString().slice(0, 10),

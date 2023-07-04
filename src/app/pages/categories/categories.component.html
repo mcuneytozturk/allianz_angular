@@ -25,7 +25,7 @@
   ></app-info>
 </div>
 <div class="flex flex-col justify-center items-center overflow-x-auto">
-  <table class="w-6/12 max-w-screen-xl">
+  <table class="w-10/12 max-w-screen-xl">
     <thead>
       <tr
         class="flex justify-between items-center w-full bg-cyan-600 text-white m-1 text-sm h-8"
@@ -49,7 +49,7 @@
     </tbody>
   </table>
   <div class="flex">
-    <app-button [icon]="faAngleLeft" textColor="text-white" [bgColor]="'bg-cyan-600'" class="text-sm" (btnClick)="handlePrevBtn()" ></app-button>
-    <app-button [icon]="faAngleRight" textColor="text-white" class="text-sm" [bgColor]="'bg-cyan-600'" (btnClick)="handleNextBtn()" ></app-button>
+    <app-button [icon]="faAngleLeft" textColor="text-white" [bgColor]="isPrevDisabled ? 'bg-cyan-950' : 'bg-cyan-600'" class="text-sm" (btnClick)="handlePrevBtn()" ></app-button>
+    <app-button [icon]="faAngleRight" textColor="text-white" class="text-sm" [bgColor]="isNextDisabled ? 'bg-cyan-950' : 'bg-cyan-600'" (btnClick)="handleNextBtn()" ></app-button>
   </div>
 </div>

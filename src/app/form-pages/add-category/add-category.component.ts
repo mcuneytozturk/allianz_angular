@@ -8,6 +8,7 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent {
+  categories: Category[] = [];
   newCategory: Category = {
     categoryId: 0,
     name: '',
@@ -16,6 +17,7 @@ export class AddCategoryComponent {
 
   constructor(private categoryService: CategoryService) {
     this.categoryService.getCategories().subscribe((categories: Category[]) => {
+      this.categories = categories;
       this.newCategory.categoryId = categories.length + 1;
     });
   }
@@ -24,7 +26,7 @@ export class AddCategoryComponent {
     this.newCategory.creationDate = new Date().toISOString().slice(0, 10);
     this.categoryService.addCategory(this.newCategory);
     this.newCategory = {
-      categoryId: 0,
+      categoryId: this.categories.length + 1,
       name: '',
       creationDate: new Date().toISOString().slice(0, 10)
     };

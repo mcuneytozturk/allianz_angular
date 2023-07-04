@@ -7,7 +7,7 @@ import {
   faTimes,
   faCircleInfo,
   faAngleLeft,
-  faAngleRight
+  faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { PostService } from 'src/app/services/post.service';
 import { Router } from '@angular/router';
@@ -27,13 +27,11 @@ export class PostsComponent {
   faCircleInfo = faCircleInfo;
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
-  pageIndex: number = 0;
-  pageSize: number = 10;
 
   searchText: string = '';
   filteredData: Post[] = [];
 
-  constructor(private postService: PostService, private router: Router){}
+  constructor(private postService: PostService, private router: Router) {}
 
   deletePost(postId: number | undefined): void {
     if (postId !== undefined) {
@@ -45,26 +43,59 @@ export class PostsComponent {
 
   ngOnInit(): void {
     this.postService.getPosts().subscribe((posts) => (this.posts = posts));
-    this.postService.getPosts().subscribe((posts) => (this.filteredData = posts));
+    this.postService
+      .getPosts()
+      .subscribe((posts) => (this.filteredData = posts));
   }
   filterData() {
     if (this.searchText === '') {
-      this.postService.getPosts().subscribe((posts) => (this.filteredData = posts));
+      this.postService
+        .getPosts()
+        .subscribe((posts) => (this.filteredData = posts));
     } else {
       this.filteredData = this.posts.filter((post) => {
         return post.postId === +this.searchText;
       });
     }
   }
-  onSearchTextChange(){
-    this.router.navigate(['posts'], { queryParams: { postId: this.searchText } });
+  onSearchTextChange() {
+    this.router.navigate(['posts'], {
+      queryParams: { postId: this.searchText },
+    });
     this.filterData();
   }
 
+  pageIndex: number = 0;
+  pageSize: number = 10;
+  isNextDisabled: boolean = false;
+  isPrevDisabled: boolean = false;
+  
+
   handlePrevBtn() {
-
+    if (this.pageIndex > 0) {
+      this.pageIndex--;
+      this.isNextDisabled = false;
+    } else {
+      this.isPrevDisabled = true;
+      alert('Last Page!!')
+    }
   }
-  handleNextBtn() {
 
+  handleNextBtn() {
+    const remainingPages = this.posts.length % this.pageSize;
+    let totalPage: number = Math.floor(this.posts.length / this.pageSize);
+
+    if(remainingPages > 0) {
+      totalPage++
+    } 
+      console.log('pageIndex: ' + this.pageIndex);
+     console.log('totalPage: ' + totalPage);
+    if (this.pageIndex + 1 < totalPage) {
+      this.pageIndex++;
+      this.isPrevDisabled = false;
+    } else {
+      alert('Last Page!!')
+      this.isNextDisabled = true;
+    }
   }
 }

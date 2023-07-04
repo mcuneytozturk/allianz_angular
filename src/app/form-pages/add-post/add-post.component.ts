@@ -8,6 +8,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./add-post.component.css']
 })
 export class AddPostComponent {
+  posts: Post[] = [];
  newPost: Post = {
   postId: 0,
   userId: 0,
@@ -20,6 +21,7 @@ export class AddPostComponent {
 
  constructor(private postService: PostService) {
   this.postService.getPosts().subscribe((posts: Post[]) => {
+    this.posts = posts;
     this.newPost.postId = posts.length + 1;
   });
 }
@@ -28,7 +30,7 @@ addNewPost(): void {
   this.newPost.creationDate = new Date().toISOString().slice(0, 10);
   this.postService.addPost(this.newPost);
   this.newPost = {
-    postId: 0,
+    postId: this.posts.length + 1,
     userId: 0,
     categoryId: 0,
     title: '',

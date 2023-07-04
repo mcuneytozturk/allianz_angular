@@ -35,7 +35,7 @@
       class="bg-white flex flex-col justify-between items-center m-1 w-full"
     >
       <tr
-        *ngFor="let comment of filteredData.slice(0, 5)"
+        *ngFor="let comment of filteredData | slice: (pageIndex * pageSize): ((pageIndex + 1) * pageSize)"
         class="flex justify-between items-center m-2 w-full text-xs h-4"
       >
         <td class="ml-12 text-center w-16">{{ comment.commentId }}</td>
@@ -61,7 +61,7 @@
     </tbody>
   </table>
   <div class="flex">
-    <app-button [icon]="faAngleLeft" textColor="text-white" [bgColor]="'bg-cyan-500'" class="text-sm" (btnClick)="handlePrevBtn()" ></app-button>
-    <app-button [icon]="faAngleRight" textColor="text-white" [bgColor]="'bg-cyan-500'" class="text-sm" (btnClick)="handleNextBtn()" ></app-button>
+    <app-button [icon]="faAngleLeft" textColor="text-white" [bgColor]="isPrevDisabled ? 'bg-cyan-950' : 'bg-cyan-400'" class="text-sm" (btnClick)="handlePrevBtn()" ></app-button>
+    <app-button [icon]="faAngleRight" textColor="text-white" [bgColor]="isNextDisabled ? 'bg-cyan-950' : 'bg-cyan-400'" class="text-sm" (btnClick)="handleNextBtn()" ></app-button>
   </div>
 </div>

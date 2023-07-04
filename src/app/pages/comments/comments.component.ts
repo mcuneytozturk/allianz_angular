@@ -64,7 +64,37 @@ export class CommentsComponent {
     });
     this.filterData();
   }
+  pageIndex: number = 0;
+  pageSize: number = 10;
+  isNextDisabled: boolean = false;
+  isPrevDisabled: boolean = false;
+  
 
-  handlePrevBtn() {}
-  handleNextBtn() {}
+  handlePrevBtn() {
+    if (this.pageIndex > 0) {
+      this.pageIndex--;
+      this.isNextDisabled = false;
+    } else {
+      this.isPrevDisabled = true;
+      alert('Last Page!!')
+    }
+  }
+
+  handleNextBtn() {
+    const remainingPages = this.comments.length % this.pageSize;
+    let totalPage: number = Math.floor(this.comments.length / this.pageSize);
+
+    if(remainingPages > 0) {
+      totalPage++
+    } 
+      console.log('pageIndex: ' + this.pageIndex);
+     console.log('totalPage: ' + totalPage);
+    if (this.pageIndex + 1 < totalPage) {
+      this.pageIndex++;
+      this.isPrevDisabled = false;
+    } else {
+      alert('Last Page!!')
+      this.isNextDisabled = true;
+    }
+  }
 }
