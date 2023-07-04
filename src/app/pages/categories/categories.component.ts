@@ -3,6 +3,7 @@ import { Category } from 'src/app/data/Category';
 
 import { faUserPen, faTrash, faCheck, faTimes, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { CategoryService } from 'src/app/services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -20,7 +21,7 @@ export class CategoriesComponent {
   searchText: string = '';
   filteredData: Category[] = [];
 
-  constructor(private categoryService: CategoryService){}
+  constructor(private categoryService: CategoryService, private router: Router){}
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe((categories) => (this.categories = categories));
@@ -37,6 +38,7 @@ export class CategoriesComponent {
   }
 
   onSearchTextChange() {
+    this.router.navigate(['/categories'], { queryParams: { categoryId: this.searchText } });
     this.filterData();
   }
 }

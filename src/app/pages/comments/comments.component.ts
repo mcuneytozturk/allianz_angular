@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Comment } from 'src/app/data/Comment';
 import { faCircleInfo, faTrash, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { CommentService } from 'src/app/services/comment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comments',
@@ -18,7 +19,7 @@ export class CommentsComponent {
   searchText: string = '';
   filteredData: Comment[] = [];
 
-  constructor(private commentService: CommentService) {}
+  constructor(private commentService: CommentService, private router: Router) {}
 
   deleteComment(commentId: number | undefined){
     if(commentId !== undefined){
@@ -43,6 +44,7 @@ export class CommentsComponent {
   }
 
   onSearchTextChange() {
+    this.router.navigate(['/comments'], { queryParams: { commentId: this.searchText } });
     this.filterData();
   }
 }

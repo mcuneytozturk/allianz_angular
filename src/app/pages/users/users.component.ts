@@ -8,6 +8,7 @@ import {
   faTimes,
   faCircleInfo,
 } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class UsersComponent {
   searchText: string = '';
   filteredData: User[] = [];
 
-  constructor(private userService: UserService ){}
+  constructor(private userService: UserService, private router: Router ){}
 
   deleteUser(userId: number | undefined): void {
     if (userId !== undefined) {
@@ -53,6 +54,7 @@ export class UsersComponent {
   }
 
   onSearchTextChange() {
+    this.router.navigate(['/users'], { queryParams: { userId: this.searchText } });
     this.filterData();
   }
 }

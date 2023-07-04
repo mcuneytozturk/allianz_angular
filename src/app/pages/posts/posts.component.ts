@@ -8,6 +8,7 @@ import {
   faCircleInfo,
 } from '@fortawesome/free-solid-svg-icons';
 import { PostService } from 'src/app/services/post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -26,7 +27,7 @@ export class PostsComponent {
   searchText: string = '';
   filteredData: Post[] = [];
 
-  constructor(private postService: PostService){}
+  constructor(private postService: PostService, private router: Router){}
 
   deletePost(postId: number | undefined): void {
     if (postId !== undefined) {
@@ -50,6 +51,7 @@ export class PostsComponent {
     }
   }
   onSearchTextChange(){
+    this.router.navigate(['posts'], { queryParams: { postId: this.searchText } });
     this.filterData();
   }
 }
