@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { User } from 'src/app/data/User';
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { Component,  } from '@angular/core';
 
 @Component({
   selector: 'app-user-detail',
@@ -8,7 +6,5 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent {
-  @Input() user !: User;
-  faTimes = faTimes;
-
+  
 }

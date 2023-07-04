@@ -10,7 +10,6 @@ export class ButtonComponent {
   @Input() text: string;
   @Input() textColor: string;
   @Input() bgColor: string;
-  @Input() round?: string;
   @Output() btnClick = new EventEmitter<any>();
 
 

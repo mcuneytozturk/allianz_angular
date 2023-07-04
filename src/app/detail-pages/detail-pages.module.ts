@@ -6,6 +6,7 @@ import { CategoryDetailComponent } from './category-detail/category-detail.compo
 import { CommentDetailComponent } from './comment-detail/comment-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,8 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
   ],
   imports: [
     CommonModule,
-    ComponentModule
+    ComponentModule,
+    FormsModule
   ],
   exports: [
     UserDetailComponent,
