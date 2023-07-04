@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ModalComponent {
   @Input() pageTitle: string = '';
-  @Input() greeting: string = '';
+  @Input() greeting?: string;
   @Input() parag1?: string;
   @Input() parag2?: string;
   @Input() parag3?: string;

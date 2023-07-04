@@ -7,12 +7,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonComponent } from './button/button.component';
 import { HeaderComponent } from './header/header.component';
 import { ModalComponent } from './modal/modal.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
     ButtonComponent,
     HeaderComponent,
-    ModalComponent
+    ModalComponent,
+    InfoComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { ModalComponent } from './modal/modal.component';
   exports: [
     ButtonComponent,
     HeaderComponent,
-    ModalComponent
+    ModalComponent,
+    InfoComponent
   ]
 })
 export class ComponentModule { }

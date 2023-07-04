@@ -10,19 +10,7 @@
       bgColor="bg-white"
     ></app-button>
   </div>
-  <div class="flex">
-    <fa-icon
-      [ngClass]="'text-2xl text-cyan-300'"
-      [icon]="faCircleInfo"
-    ></fa-icon>
-    <p class="w-96 p-2 rounded bg-cyan-500 mx-3 text-center">
-      You can add post with "Add Post Button" above and see/edit post details with "Edit Button" and delete post with the "Delete Button"
-    </p>
-    <fa-icon
-      [ngClass]="'text-2xl text-cyan-300'"
-      [icon]="faCircleInfo"
-    ></fa-icon>
-  </div>
+  <app-info textColor="text-cyan-500" color="bg-cyan-500" parag="You can add post with 'Add Post Button' above and see/edit post details with 'Edit Button' and delete post with the 'Delete Button'"></app-info>
 </div>
 <div class="flex justify-center items-center overflow-x-auto">
   <table class="w-10/12 max-w-screen-xl">

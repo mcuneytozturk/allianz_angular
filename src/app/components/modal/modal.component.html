@@ -3,9 +3,11 @@
         <div class="w-96 bg-cyan-800 flex flex-col items-center rounded pb-2 px-2">
           <h1 class="w-52 m-2 bg-white text-center rounded">{{pageTitle}}</h1>
           <div class="text-start bg-white rounded px-1 py-3">
-          {{greeting}} <br><br><hr>
-          {{parag1}} <hr>
-          {{parag2}} <hr>
+          <ng-container *ngIf="greeting" >
+            {{greeting}} <br><br><hr>
+          </ng-container> 
+          {{parag1}} <hr *ngIf="parag2">
+          {{parag2}} <hr *ngIf="parag3">
           {{parag3}}
           </div>
       </div>
