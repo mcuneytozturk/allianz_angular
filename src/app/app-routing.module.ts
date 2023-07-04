@@ -5,6 +5,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { CommentsComponent } from './pages/comments/comments.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'users', component: UsersComponent},
   {path: 'comments', component: CommentsComponent},
   {path: 'categories', component: CategoriesComponent},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
