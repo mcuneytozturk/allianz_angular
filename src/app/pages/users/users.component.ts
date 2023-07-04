@@ -7,6 +7,8 @@ import {
   faCheck,
   faTimes,
   faCircleInfo,
+  faAngleLeft,
+  faAngleRight
 } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
@@ -24,6 +26,8 @@ export class UsersComponent {
   faCheck = faCheck;
   faTimes = faTimes;
   faCircleInfo = faCircleInfo;
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
   
   searchText: string = '';
   filteredData: User[] = [];
@@ -56,5 +60,12 @@ export class UsersComponent {
   onSearchTextChange() {
     this.router.navigate(['/users'], { queryParams: { userId: this.searchText } });
     this.filterData();
+  }
+
+  handlePrevBtn() {
+
+  }
+  handleNextBtn() {
+
   }
 }

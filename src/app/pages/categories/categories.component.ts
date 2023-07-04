@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
 import { Category } from 'src/app/data/Category';
 
-import { faUserPen, faTrash, faCheck, faTimes, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUserPen,
+  faTrash,
+  faCheck,
+  faTimes,
+  faCircleInfo,
+  faAngleLeft,
+  faAngleRight,
+} from '@fortawesome/free-solid-svg-icons';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']
+  styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent {
   categories: Category[] = [];
@@ -18,18 +26,29 @@ export class CategoriesComponent {
   faCheck = faCheck;
   faTimes = faTimes;
   faCircleInfo = faCircleInfo;
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
   searchText: string = '';
   filteredData: Category[] = [];
 
-  constructor(private categoryService: CategoryService, private router: Router){}
+  constructor(
+    private categoryService: CategoryService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe((categories) => (this.categories = categories));
-    this.categoryService.getCategories().subscribe((categories) => (this.filteredData = categories));
+    this.categoryService
+      .getCategories()
+      .subscribe((categories) => (this.categories = categories));
+    this.categoryService
+      .getCategories()
+      .subscribe((categories) => (this.filteredData = categories));
   }
   filterData() {
     if (this.searchText === '') {
-      this.categoryService.getCategories().subscribe((categories) => (this.filteredData = categories));
+      this.categoryService
+        .getCategories()
+        .subscribe((categories) => (this.filteredData = categories));
     } else {
       this.filteredData = this.categories.filter((category) => {
         return category.categoryId === +this.searchText;
@@ -38,7 +57,11 @@ export class CategoriesComponent {
   }
 
   onSearchTextChange() {
-    this.router.navigate(['/categories'], { queryParams: { categoryId: this.searchText } });
+    this.router.navigate(['/categories'], {
+      queryParams: { categoryId: this.searchText },
+    });
     this.filterData();
   }
+  handlePrevBtn() {}
+  handleNextBtn() {}
 }

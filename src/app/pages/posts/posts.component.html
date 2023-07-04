@@ -1,10 +1,10 @@
 <div class="flex flex-col justify-center items-center mb-2 w-full">
   <div class="flex justify-around items-center mb-2 w-full">
-    <h1 class="text-3xl font-bold p-4 text-white">
+    <h1 class="text-lg font-bold p-4 text-white">
       {{ title }}
     </h1>
     <input
-      class="rounded p-2"
+      class="rounded p-1.5 text-sm"
       type="text"
       [(ngModel)]="searchText"
       placeholder="Search by ID"
@@ -15,19 +15,20 @@
       textColor="text-cyan-950"
       bgColor="bg-white"
       [routerLink]="['/addpost']" 
+      class="text-sm"
     ></app-button>
   </div>
   <app-info
     textColor="text-cyan-500"
     color="bg-cyan-500"
-    parag="You can add post with 'Add Post Button' above and see/edit post details with 'Edit Button' and delete post with the 'Delete Button'"
+    parag="You can add post with 'Add Post Button' above and see/edit post details with 'Edit Button' and delete post with the 'Delete Button', you can go to next page with the arrows below table"
   ></app-info>
 </div>
-<div class="flex justify-center items-center overflow-x-auto">
+<div class="flex flex-col justify-center items-center overflow-x-auto">
   <table class="w-10/12 max-w-screen-xl">
     <thead>
       <tr
-        class="flex justify-between items-center w-full bg-cyan-500 m-1 text-white"
+        class="flex justify-between items-center w-full bg-cyan-500 m-1 text-white text-sm h-8"
       >
         <th class="ml-8 text-center w-16">Post ID</th>
         <th class="w-16 text-center">User ID</th>
@@ -36,15 +37,15 @@
         <th class="w-24 text-center">View Count</th>
         <th class="w-24 text-center">Creation Date</th>
         <th class="w-24 text-center">Published</th>
-        <td class="w-16 mr-14"></td>
+        <td class="w-12 mr-16"></td>
       </tr>
     </thead>
     <tbody
       class="bg-white flex flex-col justify-between items-center m-1 w-full"
     >
       <tr
-        *ngFor="let post of filteredData.slice(0, 5)"
-        class="flex justify-between items-center m-1 w-full"
+        *ngFor="let post of filteredData | slice: (pageIndex * pageSize): ((pageIndex * 1) + pageSize)"
+        class="flex justify-between items-center m-2 w-full text-xs h-4"
       >
         <td class="ml-8 text-center w-16">{{ post.postId }}</td>
         <td class="w-16 text-center">{{ post.userId }}</td>
@@ -55,15 +56,13 @@
         <td class="w-24 text-center">
           <fa-icon [icon]="post.isPublished ? faCheck : faTimes"></fa-icon>
         </td>
-        <td class="w-16 mr-14 flex">
+        <td class="w-12 mr-16 flex">
           <app-button
-            textColor="text-white"
-            [bgColor]="'bg-cyan-500'"
+            textColor="text-cyan-500"
             [icon]="faUserPen"
           ></app-button>
           <app-button
-            textColor="text-white"
-            [bgColor]="'bg-cyan-500'"
+            textColor="text-cyan-500"
             (btnClick)="deletePost(post.postId)"
             [icon]="faTrash"
           ></app-button>
@@ -71,4 +70,8 @@
       </tr>
     </tbody>
   </table>
+  <div class="flex">
+    <app-button [icon]="faAngleLeft" textColor="text-white" [bgColor]="'bg-cyan-500'" class="text-sm" (btnClick)="handlePrevBtn()" ></app-button>
+    <app-button [icon]="faAngleRight" textColor="text-white" [bgColor]="'bg-cyan-500'" class="text-sm" (btnClick)="handleNextBtn()" ></app-button>
+  </div>
 </div>

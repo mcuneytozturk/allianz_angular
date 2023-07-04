@@ -6,6 +6,8 @@ import {
   faCheck,
   faTimes,
   faCircleInfo,
+  faAngleLeft,
+  faAngleRight
 } from '@fortawesome/free-solid-svg-icons';
 import { PostService } from 'src/app/services/post.service';
 import { Router } from '@angular/router';
@@ -23,6 +25,10 @@ export class PostsComponent {
   faCheck = faCheck;
   faTimes = faTimes;
   faCircleInfo = faCircleInfo;
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
+  pageIndex: number = 0;
+  pageSize: number = 10;
 
   searchText: string = '';
   filteredData: Post[] = [];
@@ -53,5 +59,12 @@ export class PostsComponent {
   onSearchTextChange(){
     this.router.navigate(['posts'], { queryParams: { postId: this.searchText } });
     this.filterData();
+  }
+
+  handlePrevBtn() {
+
+  }
+  handleNextBtn() {
+
   }
 }

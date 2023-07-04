@@ -1,10 +1,10 @@
-<div class="flex flex-col justify-center items-center mb-2 w-full">
+<div class="flex flex-col justify-center items-center mb-2 w-full text-sm">
   <div class="flex justify-around items-center mb-2 w-full">
-    <h1 class="text-3xl font-bold p-4 text-white">
+    <h1 class="text-lg font-bold p-4 text-white">
       {{ title }}
     </h1>
     <input
-      class="rounded p-2"
+      class="rounded p-1.5 text-sm"
       type="text"
       [(ngModel)]="searchText"
       placeholder="Search by ID"
@@ -15,6 +15,7 @@
       textColor="text-cyan-950"
       bgColor="bg-white"
       [routerLink]="['/adduser']" 
+      class="text-sm"
     ></app-button>
   </div>
   <app-info
@@ -23,11 +24,11 @@
     parag="You can add user with 'Add User Button' above and see/edit user details with 'Edit Button' and delete user with the 'Delete Button'"
   ></app-info>
 </div>
-<div class="flex justify-center items-center overflow-x-auto">
+<div class="flex flex-col justify-center items-center overflow-x-auto">
   <table class="w-10/12 max-w-screen-xl">
     <thead>
       <tr
-        class="flex justify-between items-center w-full bg-cyan-700 text-white m-1"
+        class="flex justify-between items-center w-full bg-cyan-700 text-white text-sm h-8 m-1"
       >
         <th class="ml-12 w-16 text-center">User ID</th>
         <th class="w-24 text-center">User Name</th>
@@ -42,7 +43,7 @@
     >
       <tr
         *ngFor="let user of filteredData"
-        class="flex justify-between items-center m-1 w-full"
+        class="flex justify-between items-center m-2 h-4 w-full text-xs"
       >
         <td class="ml-12 text-center w-16">{{ user.userId }}</td>
         <td class="w-24 text-center">{{ user.userName }}</td>
@@ -53,13 +54,11 @@
         </td>
         <td class="w-16 mr-14 flex">
           <app-button
-            textColor="text-white"
-            [bgColor]="'bg-cyan-700'"
+            textColor="text-cyan-700"
             [icon]="faUserPen"
           ></app-button>
           <app-button
-            textColor="text-white"
-            [bgColor]="'bg-cyan-700'"
+            textColor="text-cyan-700"
             [icon]="faTrash"
             (btnClick)="deleteUser(user.userId)"
           ></app-button>
@@ -67,4 +66,8 @@
       </tr>
     </tbody>
   </table>
+  <div class="flex">
+    <app-button [icon]="faAngleLeft" textColor="text-white" [bgColor]="'bg-cyan-700'" class="text-sm" (btnClick)="handlePrevBtn()" ></app-button>
+    <app-button [icon]="faAngleRight" textColor="text-white" [bgColor]="'bg-cyan-700'" class="text-sm" (btnClick)="handleNextBtn()" ></app-button>
+  </div>
 </div>

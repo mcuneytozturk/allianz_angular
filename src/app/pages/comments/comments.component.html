@@ -1,25 +1,27 @@
-<div class="flex flex-col justify-around items-center mb-2">
-  <h1 class="text-3xl font-bold p-4 text-white">
-    {{ title }}
-  </h1>
-  <input
-    class="rounded p-2 mb-3"
+<div class="flex justify-around items-center mb-2">
+  <div class="flex flex-col justify-around items-center mb-2 w-full">
+    <h1 class="text-lg font-bold p-4 text-white">
+      {{ title }}
+    </h1>
+    <input
+    class="rounded p-1 mb-3 text-xs w-32 h-8"
     type="text"
     [(ngModel)]="searchText"
     placeholder="Search by ID"
     (ngModelChange)="onSearchTextChange()"
-  />
-  <app-info
+    />
+    <app-info
     textColor="text-cyan-400"
     color="bg-cyan-400"
     parag="You can click 'Info Button' to see the comment and the post which comment belongs to, and Delete comment with the 'Delete Button'"
-  ></app-info>
+    ></app-info>
+  </div>
 </div>
-<div class="flex justify-center items-center overflow-x-auto">
+<div class="flex flex-col justify-center items-center overflow-x-auto">
   <table class="w-10/12 max-w-screen-xl">
     <thead>
       <tr
-        class="flex justify-between items-center w-full bg-cyan-400 text-white m-1"
+        class="flex justify-between items-center w-full bg-cyan-400 text-white m-1 text-sm h-8"
       >
         <th class="ml-12 w-16 text-center">Comment ID</th>
         <th class="w-24 text-center">Post Id</th>
@@ -34,7 +36,7 @@
     >
       <tr
         *ngFor="let comment of filteredData.slice(0, 5)"
-        class="flex justify-between items-center m-1 w-full"
+        class="flex justify-between items-center m-2 w-full text-xs h-4"
       >
         <td class="ml-12 text-center w-16">{{ comment.commentId }}</td>
         <td class="w-24 text-center">{{ comment.postId }}</td>
@@ -46,13 +48,11 @@
 
         <td class="w-16 mr-14 flex">
           <app-button
-            textColor="text-white"
-            [bgColor]="'bg-cyan-400'"
+            textColor="text-cyan-400"
             [icon]="faCircleInfo"
           ></app-button>
           <app-button
-            textColor="text-white"
-            [bgColor]="'bg-cyan-400'"
+            textColor="text-cyan-400"
             [icon]="faTrash"
             (btnClick)="deleteComment(comment.commentId)"
           ></app-button>
@@ -60,4 +60,8 @@
       </tr>
     </tbody>
   </table>
+  <div class="flex">
+    <app-button [icon]="faAngleLeft" textColor="text-white" [bgColor]="'bg-cyan-500'" class="text-sm" (btnClick)="handlePrevBtn()" ></app-button>
+    <app-button [icon]="faAngleRight" textColor="text-white" [bgColor]="'bg-cyan-500'" class="text-sm" (btnClick)="handleNextBtn()" ></app-button>
+  </div>
 </div>
