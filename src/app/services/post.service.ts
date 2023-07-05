@@ -35,8 +35,8 @@ export class PostService {
     return this.postsSubject.asObservable();
   }
 
-  getPost(id: number): Observable<Post | undefined> {
-    const post = this.posts.find((post: Post) => post.postId === id )
+  getPost(postId: number): Observable<Post | undefined> {
+    const post = this.posts.find((post: Post) => post.postId === postId )
     return of(post)
   }
 

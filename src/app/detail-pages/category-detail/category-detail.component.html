@@ -8,10 +8,11 @@
           {{ "Category ID: " + category.categoryId }}
         </h1>
         <div class="w-full text-start bg-white rounded p-4">
-          <strong>{{ "Category name: " }}</strong> {{ category.name }} <br />
+          <strong>{{ "Category name: " }}</strong> <input type="text" [(ngModel)]="category.name" /> <br />
           <hr />  
-          <strong>{{ "Category Creation Date: " }}</strong> {{ category.creationDate }}
-          <hr />
+          <strong>{{ "Category Creation Date: " }}</strong>
+        <input type="date" [(ngModel)]="category.creationDate" />
+        <hr />
           <strong>{{ "Category Posts: " }}</strong>
             <ng-container *ngIf="posts">
               <ul>

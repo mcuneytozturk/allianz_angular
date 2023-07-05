@@ -16,6 +16,11 @@ export class CommentService {
     return of(this.comments)
   }
 
+  getComment(commentId: number): Observable<Comment | undefined> {
+ const comment = this.comments.find((comment: Comment) => (comment.commentId = commentId))
+ return of(comment);
+  }
+
   addComment(newComment: Comment) {
     this.comments.push(newComment);
     this.commentSubject.next(this.comments);

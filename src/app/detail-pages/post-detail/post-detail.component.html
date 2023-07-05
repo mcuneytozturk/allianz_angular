@@ -8,10 +8,17 @@
         {{ "Post ID: " + post.postId }}
       </h1>
       <div class="w-full text-start bg-white rounded p-4">
-        <strong>{{ "Post Title: " }}</strong> {{ post.title }} <br />
+        <strong>{{ "Post Title: " }}</strong>
+        <input type="text" [(ngModel)]="post.title" /> <br />
+        <br />
         <hr />
 
-        <strong>{{ "Post Content: " }}</strong> {{ post.content }}
+        <strong>{{ "Post Content: " }}</strong>
+        <input type="text" [(ngModel)]="post.content" /> <br />
+        <hr />
+
+        <strong>{{ "Posts Creation Date: " }}</strong>
+        <input type="date" [(ngModel)]="post.creationDate" />
         <hr />
         <strong>{{ "Post Comments: " }}</strong>
         <ng-container *ngIf="comments">
