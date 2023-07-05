@@ -7,6 +7,7 @@ import { CommentDetailComponent } from './comment-detail/comment-detail.componen
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ComponentModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   exports: [
     UserDetailComponent,

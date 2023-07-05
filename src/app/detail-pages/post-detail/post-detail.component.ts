@@ -15,7 +15,7 @@ export class PostDetailComponent {
   comments: Comment[] = [];
   post?: Post;
 
-  constructor(private postService: PostService,private router: Router, private route: ActivatedRoute, private commentService: CommentService) {
+  constructor(private postService: PostService, private route: ActivatedRoute, private commentService: CommentService) {
   }
   
   ngOnInit(): void {

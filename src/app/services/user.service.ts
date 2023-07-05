@@ -24,6 +24,11 @@ export class UserService {
   getUsersSubject(): Observable<User[]> {
     return this.usersSubject.asObservable();
   }
+
+  getUser(id: number): Observable<User | undefined> {
+    const user = this.users.find((user: User) => user.userId === id )
+    return of(user)
+  }
   
   deleteUser(userId: number): void {
     const index = this.users.findIndex(user => user.userId === userId);
