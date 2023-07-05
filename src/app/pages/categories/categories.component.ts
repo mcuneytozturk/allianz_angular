@@ -6,7 +6,7 @@ import {
   faTrash,
   faCheck,
   faTimes,
-  faCircleInfo,
+  faMagnifyingGlass,
   faAngleLeft,
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
@@ -26,7 +26,7 @@ export class CategoriesComponent {
   faTrash = faTrash;
   faCheck = faCheck;
   faTimes = faTimes;
-  faCircleInfo = faCircleInfo;
+  faMagnifyingGlass = faMagnifyingGlass;
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
 
@@ -51,6 +51,7 @@ export class CategoriesComponent {
       .getCategories()
       .subscribe((categories) => (this.filteredData = categories));
   }
+
   filterData() {
     if (this.searchText === '') {
       this.categoryService
@@ -68,6 +69,14 @@ export class CategoriesComponent {
       queryParams: { categoryId: this.searchText },
     });
     this.filterData();
+  }
+
+  deleteCategory(categoryId: number | undefined): void {
+    if(categoryId !== undefined){
+      this.categoryService.deleteCategory(categoryId)
+    } else {
+      throw new Error('Gönderiye ait bir categoryId değeri bulunmuyor.')
+    }
   }
 
   pageIndex: number = 0;

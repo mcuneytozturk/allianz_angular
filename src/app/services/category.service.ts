@@ -24,4 +24,11 @@ export class CategoryService {
   getCategoriesSubject(): Observable<Category[]> {
     return this.categoriesSubject.asObservable();
   }
+
+  deleteCategory(id:number): void {
+    const index = this.categories.findIndex(category => category.categoryId === id);
+    if (index !== -1) {
+      this.categories.splice(index, 1);
+    }
+  }
 }

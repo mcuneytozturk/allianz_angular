@@ -33,6 +33,7 @@
         <th class="ml-12 w-24 text-center">Category ID</th>
         <th class="w-32 text-center">Category Name</th>
         <th class="w-28 mr-12 text-center">Creation Date</th>
+        <th class="w-12 mr-16 flex"></th>
       </tr>
     </thead>
     <tbody
@@ -45,6 +46,17 @@
         <td class="ml-12 text-center w-24">{{ category.categoryId }}</td>
         <td class="w-32 text-center">{{ category.name }}</td>
         <td class="w-28 mr-12 text-center">{{ category.creationDate }}</td>
+        <td class="w-12 mr-16 flex">
+          <app-button
+            textColor="text-cyan-500"
+            [icon]="faMagnifyingGlass"
+          ></app-button>
+          <app-button
+            textColor="text-cyan-500"
+            (btnClick)="deleteCategory(category.categoryId)"
+            [icon]="faTrash"
+          ></app-button>
+        </td>
       </tr>
     </tbody>
   </table>
