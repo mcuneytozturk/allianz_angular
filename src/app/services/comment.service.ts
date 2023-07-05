@@ -21,4 +21,9 @@ export class CommentService {
       this.comments.splice(index, 1);
     }
   }
+  
+  getCommentsByPost(id: number): Observable<Comment[]>{
+    const comments = this.comments.filter(comment => comment.postId === id)
+    return of(comments)
+  }
 }

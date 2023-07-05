@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Comment } from 'src/app/data/Comment';
 import {
-  faCircleInfo,
+  faMagnifyingGlass,
   faTrash,
   faCheck,
   faTimes,
@@ -19,7 +19,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CommentsComponent {
   comments: Comment[] = [];
   title: string = 'Comments';
-  faCircleInfo = faCircleInfo;
+  faMagnifyingGlass = faMagnifyingGlass;
   faTrash = faTrash;
   faCheck = faCheck;
   faTimes = faTimes;

@@ -21,7 +21,7 @@
   <app-info
     textColor="text-cyan-500"
     color="bg-cyan-500"
-    parag="You can add post with 'Add Post Button' above and see/edit post details with 'Edit Button' and delete post with the 'Delete Button', you can go to next page with the arrows below table"
+    parag="You can add post with 'Add Post Button' above and see post details with 'Detail Button' and delete post with the 'Delete Button', you can go to next page with the arrows below table"
   ></app-info>
 </div>
 <div class="flex flex-col justify-center items-center overflow-x-auto">
@@ -59,7 +59,7 @@
         <td class="w-12 mr-16 flex">
           <app-button
             textColor="text-cyan-500"
-            [icon]="faUserPen"
+            [icon]="faMagnifyingGlass"
             [routerLink]="'/posts/' + post.postId"
           ></app-button>
           <app-button

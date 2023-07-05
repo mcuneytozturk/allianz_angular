@@ -5,7 +5,7 @@ import {
   faTrash,
   faCheck,
   faTimes,
-  faCircleInfo,
+  faMagnifyingGlass,
   faAngleLeft,
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +24,7 @@ export class PostsComponent {
   faTrash = faTrash;
   faCheck = faCheck;
   faTimes = faTimes;
-  faCircleInfo = faCircleInfo;
+  faMagnifyingGlass = faMagnifyingGlass;
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
 

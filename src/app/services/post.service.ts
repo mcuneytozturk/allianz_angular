@@ -25,6 +25,11 @@ export class PostService {
     return this.postsSubject.asObservable();
   }
 
+  getPost(id: number): Observable<Post | undefined> {
+    const post = this.posts.find((post: Post) => post.postId === id )
+    return of(post)
+  }
+
   deletePost(postId: number): void {
     const index = this.posts.findIndex(post => post.postId === postId);
     if (index !== -1) {
