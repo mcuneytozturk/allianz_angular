@@ -41,15 +41,15 @@ export class CategoriesComponent {
 
   ngOnInit(): void {
     const queryParams = this.route.snapshot.queryParams;
-    if (queryParams['i'] !== undefined) {
-      this.pageIndex = parseInt(queryParams['i']);
+    if (queryParams['categoryId'] !== undefined) {
+      this.pageIndex = parseInt(queryParams['categoryId']);
     }
     this.categoryService
-      .getCategories()
-      .subscribe((categories) => (this.categories = categories));
+    .getCategories()
+    .subscribe((categories) => (this.categories = categories));
     this.categoryService
-      .getCategories()
-      .subscribe((categories) => (this.filteredData = categories));
+    .getCategories()
+    .subscribe((categories) => (this.filteredData = categories));
   }
 
   filterData() {
