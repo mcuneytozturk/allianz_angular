@@ -13,6 +13,8 @@ import { CommentDetailComponent } from './detail-pages/comment-detail/comment-de
 import { AddUserComponent } from './form-pages/add-user/add-user.component';
 import { AddPostComponent } from './form-pages/add-post/add-post.component';
 import { AddCategoryComponent } from './form-pages/add-category/add-category.component';
+import { CategoryDetailComponent } from './detail-pages/category-detail/category-detail.component';
+import { AddCommentComponent } from './form-pages/add-comment/add-comment.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
@@ -23,8 +25,10 @@ const routes: Routes = [
   {path: 'addpost', component: AddPostComponent},
   {path: 'posts/:id', component: PostDetailComponent },
   {path: 'comments', component: CommentsComponent},
+  {path: 'addcomment', component: AddCommentComponent},
   {path: 'comments/:id', component: CommentDetailComponent },
   {path: 'categories', component: CategoriesComponent},
+  {path: 'categories/:id', component: CategoryDetailComponent},
   {path: 'addcategory', component: AddCategoryComponent },
   {path: '**', component: NotFoundComponent}
 ];

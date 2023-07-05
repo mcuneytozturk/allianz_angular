@@ -5,6 +5,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { FormsModule } from '@angular/forms';
 import { ComponentModule } from '../components/component.module';
+import { AddCommentComponent } from './add-comment/add-comment.component';
 
 
 
@@ -12,7 +13,8 @@ import { ComponentModule } from '../components/component.module';
   declarations: [
     AddUserComponent,
     AddCategoryComponent,
-    AddPostComponent
+    AddPostComponent,
+    AddCommentComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { ComponentModule } from '../components/component.module';
   exports: [
     AddUserComponent,
     AddCategoryComponent,
-    AddPostComponent
+    AddPostComponent,
+    AddCommentComponent
   ]
 })
 export class FormPagesModule { }

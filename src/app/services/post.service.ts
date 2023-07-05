@@ -21,6 +21,11 @@ export class PostService {
     return of(posts)
   }
 
+  getPostsByCategory(id: number): Observable<Post[]> {
+    const posts = this.posts.filter(post => post.categoryId === id)
+    return of(posts)
+  }
+
   addPost(newPost: Post): void {
     this.posts.push(newPost);
     this.postsSubject.next(this.posts);

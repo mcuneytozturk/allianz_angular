@@ -1,5 +1,5 @@
-<div class="flex justify-around items-center mb-2">
-  <div class="flex flex-col justify-around items-center mb-2 w-full">
+<div class="flex flex-col justify-around items-center mb-2">
+  <div class="flex justify-around items-center mb-2 w-full">
     <h1 class="text-lg font-bold p-4 text-white">
       {{ title }}
     </h1>
@@ -7,15 +7,22 @@
     class="rounded p-1 mb-3 text-xs w-32 h-8"
     type="text"
     [(ngModel)]="searchText"
-    placeholder="Search by ID"
+    placeholder="Search by postID"
     (ngModelChange)="onSearchTextChange()"
     />
-    <app-info
-    textColor="text-cyan-400"
-    color="bg-cyan-400"
-    parag="You can click 'Info Button' to see the comment and the post which comment belongs to, and Delete comment with the 'Delete Button'"
-    ></app-info>
+    <app-button
+      text="Add Comment"
+      textColor="text-cyan-950"
+      bgColor="bg-white"
+      [routerLink]="['/addcomment']" 
+      class="text-sm"
+    ></app-button>
   </div>
+  <app-info
+  textColor="text-cyan-400"
+  color="bg-cyan-400"
+  parag="You can click 'Info Button' to see the comment and the post which comment belongs to, and Delete comment with the 'Delete Button'"
+  ></app-info>
 </div>
 <div class="flex flex-col justify-center items-center overflow-x-auto">
   <table class="w-10/12 max-w-screen-xl">

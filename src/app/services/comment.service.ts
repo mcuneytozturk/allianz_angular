@@ -8,11 +8,17 @@ import { COMMENTS } from 'src/app/data/comments';
 })
 export class CommentService {
   private comments: Comment[] = COMMENTS
+  private commentSubject: Subject<Comment[]> = new Subject<Comment[]>()
 
   constructor() { }
 
   getComments(): Observable<Comment[]>{
     return of(this.comments)
+  }
+
+  addComment(newComment: Comment) {
+    this.comments.push(newComment);
+    this.commentSubject.next(this.comments);
   }
 
   deleteComment(commentId: number){

@@ -32,8 +32,8 @@ export class CommentsComponent {
 
   ngOnInit(): void {
       const queryParams = this.route.snapshot.queryParams;
-      if (queryParams['i'] !== undefined) {
-        this.pageIndex = parseInt(queryParams['i']);
+      if (queryParams['p'] !== undefined) {
+        this.pageIndex = parseInt(queryParams['p']);
       }
     this.commentService
       .getComments()
@@ -59,15 +59,12 @@ export class CommentsComponent {
         .subscribe((comments) => (this.filteredData = comments));
     } else {
       this.filteredData = this.comments.filter((comment) => {
-        return comment.commentId === +this.searchText;
+        return comment.postId === +this.searchText;
       });
     }
   }
 
   onSearchTextChange() {
-    this.router.navigate(['/comments'], {
-      queryParams: { commentId: this.searchText },
-    });
     this.filterData();
   }
   pageIndex: number = 0;
@@ -83,7 +80,7 @@ export class CommentsComponent {
       this.pageIndex === 0
         ? this.router.navigate(['comments'])
         : this.router.navigate(['comments'], {
-            queryParams: { i: this.pageIndex },
+            queryParams: { p: this.pageIndex },
           });
     } else {
       this.isPrevDisabled = true;
@@ -102,7 +99,7 @@ export class CommentsComponent {
       this.pageIndex++;
       this.isPrevDisabled = false;
       this.router.navigate(['comments'], {
-        queryParams: { i: this.pageIndex },
+        queryParams: { p: this.pageIndex },
       });
     } else {
       alert('Last Page!!')
